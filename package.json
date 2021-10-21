@@ -1,0 +1,24 @@
+{
+  "name": "apifinderup",
+  "version": "1.0.0",
+  "description": "Api Finder Up",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "swagger-autogen": "node swagger.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.11",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "node-datetime": "^2.1.2",
+    "nodemon": "^2.0.13",
+    "swagger-autogen": "^2.11.2",
+    "swagger-ui-express": "^4.1.6",
+    "underscore": "^1.13.1"
+  }
+}

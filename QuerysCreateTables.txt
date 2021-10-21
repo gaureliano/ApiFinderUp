@@ -1,0 +1,31 @@
+Create table produto
+
+(
+    id int primary key,
+    name_produto varchar(50),
+    quant int
+)
+
+Create unique index ix_name_produto on produto (produto)
+
+--------------------------------------------------------
+
+Create table funcionario
+
+(
+    id int primary key,
+    name_func varchar(50),
+    tipo int
+)
+
+
+---------------------------------------------------------
+
+Create table transacoes
+
+(
+    id_func int,
+    id_prod int,
+    quant int,
+    data datetime
+)
