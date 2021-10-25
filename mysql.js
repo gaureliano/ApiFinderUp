@@ -1,5 +1,6 @@
 const mysql = require('mysql');
 
+// Configuração do banco de dados
 var pool = mysql.createPool({
     "user": "root",
     "password": "admin123",

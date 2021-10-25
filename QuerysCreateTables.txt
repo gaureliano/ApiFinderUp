@@ -1,19 +1,19 @@
 Create table produto
 
 (
-    id int primary key,
+    id int primary key AUTO_INCREMENT,
     name_produto varchar(50),
     quant int
 )
 
-Create unique index ix_name_produto on produto (produto)
+
 
 --------------------------------------------------------
 
 Create table funcionario
 
 (
-    id int primary key,
+    id int primary key AUTO_INCREMENT,
     name_func varchar(50),
     tipo int
 )

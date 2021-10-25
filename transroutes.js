@@ -5,6 +5,8 @@ const mysql = require ('./mysql').pool
 var dateTime = require('node-datetime');
 
 
+// Rotas relacionadas a tabela de transacoes
+
 transroutes.put('/RawMaterials', (req,res) => {
    
     
@@ -14,7 +16,7 @@ transroutes.put('/RawMaterials', (req,res) => {
     mysql.getConnection((error, conn) =>{
         if(error){ return res.status(500).send({ error: error })}
         conn.query(
-            'INSERT INTO transacoes (id_func, id_prod, quant, data) VALUES (?,?,?,?)',
+            'INSERT INTO transacoes (id_func, id_prod, quant, data) VALUES (?,?,-?,?)',
             [req.body.id_func,req.body.id_prod,req.body.quant,date],
             (error, resultado, field) => {
                 conn.release();

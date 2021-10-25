@@ -3,6 +3,8 @@ const mongoose = require('mongoose')
 const funcroutes = express.Router()
 const mysql = require ('./mysql').pool
 
+// Rotas relacionadas a tabela funcionário
+
 funcroutes.get('/funcionario', (req,res) => {
 
     mysql.getConnection((error, conn) => {

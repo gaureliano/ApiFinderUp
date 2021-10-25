@@ -3,7 +3,9 @@ const mongoose = require('mongoose')
 const prodroutes = express.Router()
 const mysql = require ('./mysql').pool
 var dateTime = require('node-datetime')
-let quantAtual = 0
+
+
+// Rotas relacionadas a tabela de produtos
 
 prodroutes.get('/produtos', (req,res) => {
 
@@ -36,11 +38,13 @@ prodroutes.get('/produtos/:id_produto', (req,res) => {
 
 prodroutes.post('/cadastroProd', (req,res) => {
     
+    
+
     mysql.getConnection((error, conn) =>{
         if(error){ return res.status(500).send({ error: error })}
         conn.query(
             'INSERT INTO produto (name_produto, quant) VALUES (?,?)',
-            [req.body.name,req.body.quantity],
+            [req.body.name,0],
             (error, resultado, field) => {
                 conn.release();
                 if (error){
@@ -63,26 +67,15 @@ prodroutes.patch('/adicionarProd', (req,res) => {
     
     var dt = dateTime.create();
     var date = dt.format('Y-m-d H:M:S');
+    
 
     mysql.getConnection((error, conn) =>{
         if(error){ return res.status(500).send({ error: error })}
         conn.query(
-            'SELECT * FROM produto WHERE id = ?;',
-            [req.body.id_prod],
-            (error, resultado, fields) => {
-                if (error) { return res.status(500).send({ error: error })}
-                var string=JSON.stringify(resultado);
-                var json =  JSON.parse(string);
-                let quantAtual = json[0].quant + req.body.quant
-                console.log(quantAtual,json[0].quant)
-            }
-        )
-        console.log(quantAtual)
-        conn.query(
             `UPDATE produto
-                SET quant = ?
+                SET quant = quant + ?
             WHERE id = ?;`,
-            [quantAtual,req.body.id_prod],
+            [req.body.quant,req.body.id_prod],
             (error, resultado, field) => {
                 if (error){
                     return res.status(500).send({
@@ -90,7 +83,6 @@ prodroutes.patch('/adicionarProd', (req,res) => {
                         response: null
                     });
                 } 
-                console.log(quantAtual)
             }
         )
         conn.query(

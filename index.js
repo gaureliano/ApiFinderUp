@@ -9,6 +9,8 @@ const swaggerFile = require('./swagger.json')
 
 const app = express()
 
+// Inicialização do server
+
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({ extended : false}))
 app.use(express.json())

@@ -184,8 +184,39 @@
               "properties": {
                 "name": {
                   "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/adicionarProd": {
+      "patch": {
+        "tags": [],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "quant": {
+                  "example": "any"
                 },
-                "quantity": {
+                "id_prod": {
+                  "example": "any"
+                },
+                "id_func": {
                   "example": "any"
                 }
               }
